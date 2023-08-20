@@ -37,7 +37,7 @@ def get_data():
 
 
 @app.get("/")
-def read_root():
+def read_data():
     data = json.loads(json_util.dumps(get_data()))
     if len(data) == 0:
         raise HTTPException(
