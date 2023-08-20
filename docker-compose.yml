@@ -1,0 +1,32 @@
+version: '3'
+services:
+  mqttdb-server:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+  mqtt-receiver:
+    build:
+      context: ./mqtt_receiver
+      dockerfile: Dockerfile
+
+    environment:
+      - Mqtt_host=broker.hivemq.com
+      - Mqtt_port=1883
+      - DB_host=172.17.0.1
+      - DB_port=27017
+      - DB_name=Mqtt_db
+  mqtt-publisher:
+    build:
+      context: ./mqtt_publisher
+      dockerfile: Dockerfile
+
+  rest-api:
+    build:
+      context: ./Rest_api
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    environment:
+      - DB_host=172.17.0.1
+      - DB_port=27017
+      - DB_name=Mqtt_db
