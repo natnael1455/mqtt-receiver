@@ -1,11 +1,11 @@
 import paho.mqtt.client as mqtt
-
+import os 
 
 class MqttClient:
     def __init__(self, broker_address):
         self.client = mqtt.Client()
         self.client.on_connect = self.on_connect
-        self.client.connect(broker_address, port=1883)  # Adjust port as needed
+        self.client.connect(broker_address, port=int(os.getenv("Mqtt_port")))   # Adjust port as needed
 
     def on_connect(self, client, userdata, flags, rc):
         if rc == 0:

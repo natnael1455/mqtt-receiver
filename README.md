@@ -4,7 +4,15 @@ The mqtt-receiver project even though it's name idicate as MQTT message revice i
 
 2. the REST api sub project it prpose to to serve or show the data that is save in the monogDB database by the mqtt-receiver it has one api that listens to get method of the port 8000 the it can be modified by changing the host port number for the matter of convince or incase port confilicte.
 
-3. The last one is MQTT publisher project (opsional) that connect to the mqtt broker and publish the message to the broker. it can be used to test the mqtt-receiver project.
+3. The last one is MQTT publisher project (opsional) that connect to the mqtt broker and publish the message to the broker. it can be used to test the mqtt-receiver project. if you are palning to use your own mqtt publisher. then you to know the following things.
+      1. the mqtt-receiver project is listening to the topic "nati/topic" 
+
+      2. use same Mqqtt host and port in my case are "broker.hivemq.com"and 1883 respectively.
+
+      3. the message should be in json format and should have the following keys 
+      ```json
+      "session_id", "energy_delivered_in_kWh", "duration_in_seconds", "session_cost_in_cents" and the values should be in the following format "session_id": "df624335-1107-4999-8833-e8d721e83739", "energy_delivered_in_kWh": 26.444530841066246, "duration_in_seconds": 16, "session_cost_in_cents": 79.33359252319875.  
+      ```
 
 both  the MQTT reveiver and publisher use paho.mqtt.client to connect as wel as send and receive the message from the broker.
 and the REST api and MQTT receiver use pymongo to connect to monogDB database. and the REST api use FastAPI to serve the data.
@@ -41,6 +49,13 @@ mqtt-receiver-mqttdb-server-1     mongo:latest                   "docker-entrypo
 mqtt-receiver-rest-api-1          mqtt-receiver-rest-api         "uvicorn main:app --…"   rest-api            55 minutes ago      Up 55 minutes       0.0.0.0:8000->8000/tcp 
 ```
 at this point you should see 4 containers running in the machine the forth being the monogDB server.
+
+## optional step mqtt broker
+if you diced to use to use other mqtt brokers hosts other than the public one "broker.hivemq.com" set a host with simple host with no credentails for TLS encryption. and it is adivised to set it in other machine with network connection  to your machine as there is high probablity the mqqt container will fail to make connection to the broker in your localhost even with the brige network. after setting the mqtt broker change following environment variable in the docker-compose.yml file in the root directory of the project. in both mqtt publisher and receiver.
+```docker-compose
+      - Mqtt_host=host-address 
+      - Mqtt_port=port-number
+``````
 
 # Usage
 ## MQTT publisher

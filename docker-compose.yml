@@ -19,6 +19,9 @@ services:
     build:
       context: ./mqtt_publisher
       dockerfile: Dockerfile
+    environment:
+      - Mqtt_host=broker.hivemq.com
+      - Mqtt_port=1883
 
   rest-api:
     build:

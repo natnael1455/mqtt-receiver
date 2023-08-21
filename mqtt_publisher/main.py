@@ -4,6 +4,7 @@ import uuid
 import random
 import time
 import logging
+import os
 
 # Configure logging settings
 logging.basicConfig(level=logging.DEBUG,  # Set the logging level
@@ -23,7 +24,7 @@ def data_generator():
 
 
 def main():
-    broker_address = "broker.hivemq.com"  # Change this to your broker's address
+    broker_address = os.getenv("Mqtt_host")  # Change this to your broker's address
     mqtt_client = MqttClient(broker_address)
     topic = "nati/topic"
     while True:
