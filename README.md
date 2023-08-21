@@ -55,7 +55,7 @@ the "mqtt-receiver-mqtt-publisher-1" is the name of the container. you should ch
 2023-08-20 22:04:12,937 - INFO - {'session_id': 'cd2996c9-dbfc-42e4-9a22-e009fc0bf01e', 'energy_delivered_in_kWh': 13.348745806260666, 'duration_in_seconds': 3, 'session_cost_in_cents': 40.046237418782}
 2023-08-20 22:05:12,990 - INFO - {'session_id': 'df624335-1107-4999-8833-e8d721e83739', 'energy_delivered_in_kWh': 26.444530841066246, 'duration_in_seconds': 16, 'session_cost_in_cents': 79.33359252319875}
 2023-08-20 22:06:13,055 - INFO - {'session_id': 'a0b14be6-775f-4173-9f78-024c21f05429', 'energy_delivered_in_kWh': 25.19380014838053, 'duration_in_seconds': 5, 'session_cost_in_cents': 75.58140044514158}
-
+```
 
 ## MQTT receiver
 As it listen to the MQTT broker it logs messages and save the in the DATABASE. you can see the logs by using the following command.
