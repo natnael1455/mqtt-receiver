@@ -73,7 +73,7 @@ the "mqtt-receiver-mqtt-publisher-1" is the name of the container. you should ch
 ```
 
 ## MQTT receiver
-As it listen to the MQTT broker it logs messages and save the in the DATABASE. you can see the logs by using the following command.
+As it listen to the MQTT broker it logs messages and save them in the DATABASE. you can see the logs by using the following command.
 ```bash
 docker logs -f mqtt-receiver-mqtt-receiver-1 
 ```
