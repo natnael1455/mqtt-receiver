@@ -7,7 +7,7 @@ The mqtt-receiver project even though it's name idicate as MQTT message revice i
 3. The last one is MQTT publisher project (opsional) that connect to the mqtt broker and publish the message to the broker. it can be used to test the mqtt-receiver project. if you are palning to use your own mqtt publisher. then you to know the following things.
       1. the mqtt-receiver project is listening to the topic "nati/topic" 
 
-      2. use same Mqqtt host and port in my case are "broker.hivemq.com"and 1883 respectively.
+      2. use same Mqqtt host and port in my case are "broker.emqx.io"and 1883 respectively.
 
       3. the message should be in json format and should have the following keys 
       ```json

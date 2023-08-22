@@ -10,7 +10,7 @@ services:
       dockerfile: Dockerfile
 
     environment:
-      - Mqtt_host=broker.hivemq.com
+      - Mqtt_host=broker.emqx.io
       - Mqtt_port=1883
       - DB_host=172.17.0.1
       - DB_port=27017
@@ -20,7 +20,7 @@ services:
       context: ./mqtt_publisher
       dockerfile: Dockerfile
     environment:
-      - Mqtt_host=broker.hivemq.com
+      - Mqtt_host=broker.emqx.io
       - Mqtt_port=1883
 
   rest-api:
