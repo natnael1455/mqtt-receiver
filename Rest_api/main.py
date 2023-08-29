@@ -10,8 +10,10 @@ from fastapi.responses import JSONResponse
 from lib.mongo_db import MongoDBConnection
 
 # Configure logging settings
-logging.basicConfig(level=logging.DEBUG,  # Set the logging level
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.DEBUG,  # Set the logging level
+    format="%(asctime)s - %(levelname)s - %(message)s",
+)
 
 # Load variables from .env file
 load_dotenv()
@@ -26,13 +28,13 @@ def get_data():
         collection_name = "data"
         connection = MongoDBConnection(mongo_uri, db_name)
         data = connection.get_documents(collection_name)
-        connection.close_connection()  
+        connection.close_connection()
         return data
     except pymongo.errors.ServerSelectionTimeoutError:
         logging.error("Connection to the database failed")
         raise HTTPException(
             status_code=404,
-            detail=f"Connection to the database failed",
+            detail="Connection to the database failed",
         )
 
 
@@ -41,8 +43,7 @@ def read_data():
     data = json.loads(json_util.dumps(get_data()))
     if len(data) == 0:
         raise HTTPException(
-             status_code=404,
-             detail=f"Items not found",
-         )
+            status_code=404,
+            detail="Items not found",
+        )
     return JSONResponse(content=data)
-    

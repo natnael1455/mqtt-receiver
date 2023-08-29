@@ -13,6 +13,5 @@ class MongoDBConnection:
         collection = self.get_collection(collection_name)
         collection.insert_one(data)
 
-
     def close_connection(self):
         self.client.close()

@@ -8,10 +8,11 @@ class MongoDBConnection:
 
     def get_collection(self, collection_name):
         return self.db[collection_name]
-    
+
     def get_documents(self, collection_name):
         collection = self.get_collection(collection_name)
         return list(collection.find())
 
     def close_connection(self):
         self.client.close()
+        
