@@ -51,7 +51,7 @@ mqtt-receiver-rest-api-1          mqtt-receiver-rest-api         "uvicorn main:a
 at this point you should see 4 containers running in the machine the forth being the monogDB server.
 
 ## optional step mqtt broker
-if you diced to use to use other mqtt brokers hosts other than the public one "broker.hivemq.com" set a host with simple host with no credentails for TLS encryption. After setting the mqtt broker change following environment variable in the docker-compose.yml file in the root directory of the project. in both mqtt publisher and receiver.
+if you decide to use other MQTT brokers hosts other than the public one "broker.hivemq.com" set a host with simple host with no credentails for TLS encryption. After setting the mqtt broker change following environment variable in the docker-compose.yml file in the root directory of the project. in both MQTT publisher and receiver.
 ```docker-compose
       - Mqtt_host=host-address 
       - Mqtt_port=port-number
